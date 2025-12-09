@@ -12,12 +12,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -28,6 +29,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
 import com.example.progetto_fotogram.button_noteworthy
 import com.example.progetto_fotogram.color_background
 import com.example.progetto_fotogram.color_name_text
@@ -35,9 +37,9 @@ import com.example.progetto_fotogram.title_noteworthy
 import com.example.progetto_fotogram.transparency
 
 @Composable
-fun New_Post(
+fun Profile_Edit(
     modifier: Modifier = Modifier,
-    onHomescreen_Click : () -> Unit
+    onProfilescreen_Click: () -> Unit
 ) {
 
     val textFieldModifier = Modifier
@@ -50,12 +52,11 @@ fun New_Post(
             .statusBarsPadding()
             .fillMaxSize()
             .fillMaxWidth()
-            .padding(top = 35.dp)
+            .padding(top = 15.dp)
     ) {
-
         Row() {
             IconButton(
-                onClick = { onHomescreen_Click() },
+                onClick = { onProfilescreen_Click() },
                 modifier = androidx.compose.ui.Modifier
                     .padding(start = 5.dp, bottom=10.dp),
                 shape = RoundedCornerShape(0.dp),
@@ -77,7 +78,7 @@ fun New_Post(
                 .padding(bottom = 20.dp)
         ) {
             Text(
-                text = "Create a new post:",
+                text = "Edit your profile:",
                 modifier = modifier,
                 color = title_noteworthy,
                 fontSize = 35.sp,
@@ -100,44 +101,7 @@ fun New_Post(
                     .padding(bottom = 4.dp) // spazio tra label e TextField
             ) {
                 Text(
-                    text = "select your photo:",
-                    color = color_name_text,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold,
-                )
-                TextField(
-                    value = "",
-                    onValueChange = {},
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp)
-                        .clip(RoundedCornerShape(12.dp)),
-                    placeholder = {
-                        Text(
-                            "Upload new picture..",
-                            color = Color(0xFFBE97C5)
-                        )
-                    },
-                    readOnly = true
-                )
-
-
-            }
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 15.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .padding(bottom = 4.dp) // spazio tra label e TextField
-            ) {
-                Text(
-                    text = "description:",
+                    text = "username:",
                     color = color_name_text,
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
@@ -169,7 +133,7 @@ fun New_Post(
                     .padding(bottom = 4.dp) // spazio tra label e TextField
             ) {
                 Text(
-                    text = "add location:",
+                    text = "profile picture:",
                     color = color_name_text,
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
@@ -184,12 +148,71 @@ fun New_Post(
                     placeholder = { Text("Write something...", color = Color(0xFFBE97C5)) },
                     readOnly = true
                 )
-                Row {
-                    Text(
-                        text = "This feature requires access to your location. Please enable it in Settings.",
-                        color = Color(0xFFFFB74D)
-                    )
-                }
+
+
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 15.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .padding(bottom = 4.dp) // spazio tra label e TextField
+            ) {
+                Text(
+                    text = "date of birth:",
+                    color = color_name_text,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                TextField(
+                    value = "",
+                    onValueChange = {},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .clip(RoundedCornerShape(12.dp)),
+                    placeholder = { Text("Upload new picture...", color = Color(0xFFBE97C5)) },
+                    readOnly = true
+                )
+
+
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 15.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .padding(bottom = 4.dp) // spazio tra label e TextField
+            ) {
+                Text(
+                    text = "bio:",
+                    color = color_name_text,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                TextField(
+                    value = "",
+                    onValueChange = {},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .clip(RoundedCornerShape(12.dp)),
+                    placeholder = { Text("Write something...", color = Color(0xFFBE97C5)) },
+                    readOnly = true
+                )
+
 
             }
         }
@@ -201,16 +224,16 @@ fun New_Post(
             horizontalArrangement = Arrangement.Center,
         ) {
             Button(
-                onClick = {onHomescreen_Click() },
+                onClick = { onProfilescreen_Click() },
                 modifier = androidx.compose.ui.Modifier
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = 40.dp),
                 shape = RoundedCornerShape(0.dp),
                 border = BorderStroke(2.dp, color_name_text),
-                colors = ButtonDefaults.buttonColors(containerColor = transparency)
+                colors = ButtonDefaults.buttonColors(containerColor = transparency) // viola moderno
             ) {
                 Text(
-                    "Post",
-                    fontSize = 25.sp,
+                    "Save",
+                    fontSize = 30.sp,
                     color = color_name_text,
                     fontWeight = FontWeight.ExtraBold
                 )

@@ -23,8 +23,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.progetto_fotogram.button_noteworthy
 import com.example.progetto_fotogram.color_background
 import com.example.progetto_fotogram.color_name_text
+import com.example.progetto_fotogram.title_noteworthy
+import com.example.progetto_fotogram.transparency
 
 
 @Composable
@@ -52,7 +55,7 @@ fun Registration(
             Text(
                 text = "Welcome!",
                 modifier = modifier,
-                color = Color(0xFFFFFFFF),
+                color = title_noteworthy,
                 fontSize = 45.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold,
@@ -135,10 +138,15 @@ fun Registration(
                 modifier = androidx.compose.ui.Modifier
                     .padding(horizontal = 40.dp),
                 shape = RoundedCornerShape(0.dp),
-                border = BorderStroke(2.dp, color_name_text),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)) // viola moderno
+                border = BorderStroke(2.dp, title_noteworthy),
+                colors = ButtonDefaults.buttonColors(containerColor = transparency) // viola moderno
             ) {
-                Text("Create an account", fontSize = 23.sp, color = Color.White)
+                Text(
+                    "Create an account",
+                    fontSize = 26.sp,
+                    color = title_noteworthy,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }

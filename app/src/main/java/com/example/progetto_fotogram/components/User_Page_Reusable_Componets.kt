@@ -2,8 +2,8 @@ package com.example.progetto_fotogram.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import  com.example.progetto_fotogram.R
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,23 +20,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.progetto_fotogram.button_noteworthy
+import com.example.progetto_fotogram.R
 import com.example.progetto_fotogram.color_background
 import com.example.progetto_fotogram.color_name_text
-import com.example.progetto_fotogram.title_noteworthy
 import com.example.progetto_fotogram.transparency
 
-
 @Composable
-fun Profile(
-    modifier: Modifier = Modifier,
-    onEditscreen_Click: () -> Unit
+fun User_Information(
+    Img_id : Int,
+    User_name: String,
+    Number_Post : Int,
+    Number_Follower: Int,
+    Number_Following: Int,
 ) {
     Column(
         modifier = Modifier
@@ -56,7 +56,7 @@ fun Profile(
                 modifier = Modifier
             ) {
                 Image(
-                    painter = painterResource(R.drawable.senior_cat),
+                    painter = painterResource(Img_id),
                     contentDescription = null,
                     modifier = Modifier
                         .size(123.dp)          // dimensione dell'immagine
@@ -73,7 +73,7 @@ fun Profile(
                         .padding(bottom = 20.dp)
                 ) {
                     Text(
-                        text = "@Debugger_kitty",
+                        text = User_name,
                         color = Color.White,
                         fontSize = 25.sp,
                         fontFamily = FontFamily.Monospace,
@@ -93,7 +93,7 @@ fun Profile(
                             fontSize = 19.sp
                         )
                         Text(
-                            text = "3",
+                            text = "$Number_Post",
                             color = Color.White,
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp
@@ -104,7 +104,7 @@ fun Profile(
                             .padding(end = 15.dp)
                     ) {
                         Text(
-                            text = "Followers",
+                            text = "$Number_Follower",
                             color = Color.White,
                             fontWeight = FontWeight.Bold,
                             fontSize = 19.sp
@@ -121,7 +121,7 @@ fun Profile(
                             .padding(end = 15.dp)
                     ) {
                         Text(
-                            text = "Following",
+                            text = "$Number_Following",
                             color = Color.White,
                             fontWeight = FontWeight.Bold,
                             fontSize = 19.sp
@@ -136,84 +136,51 @@ fun Profile(
                 }
             }
         }
-        Column(
+    }
+}
+
+@Composable
+fun Dob_Bio_User (
+    date_of_birth : String,
+    bio: String
+) {
+    Column(
+        modifier = Modifier
+            .padding(top = 20.dp)
+            .padding(start = 15.dp)
+            .padding(end = 10.dp)
+    ) {
+        Row(
             modifier = Modifier
-                .padding(top = 20.dp)
-                .padding(start = 15.dp)
-                .padding(end = 10.dp)
+                .padding(bottom = 13.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 13.dp)
-            ) {
-                Text(
-                    text = "21/08/1231",
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 20.dp)
-            ) {
-                Text(
-                    text = "Top bug discoverer of glitches no dev imagined. I don’t break code on purpose… it just trembles. Talent? Curse? A mix of both.",
-                    color = Color.White,
-                    fontFamily = FontFamily.Serif,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
-                )
-            }
+            Text(
+                text = date_of_birth,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
+            )
         }
         Row(
             modifier = Modifier
-                .padding(10.dp)
-                .padding(bottom = 30.dp)
+                .padding(bottom = 20.dp)
         ) {
-            Button(
-                onClick = { onEditscreen_Click() },
-                modifier = androidx.compose.ui.Modifier
-                    .weight(1F),
-                shape = RoundedCornerShape(0.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = transparency),
-                border = BorderStroke(2.dp, color = color_name_text)
-            ) {
-                Text(
-                    "Edit",
-                    color = color_name_text,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.ExtraBold
-                )
-            }
-        }  // metti un'altra column
-        Row() {
-            Image(
-                painter = painterResource(id = R.drawable.merry_cat),
-                contentDescription = "My cat with a christmas tree",
-                modifier = androidx.compose.ui.Modifier
-                    .size(150.dp)
-                    .clip(RoundedCornerShape(0.dp)),
-                contentScale = ContentScale.Crop
-            )
-            Image(
-                painter = painterResource(id = R.drawable.mycat),
-                contentDescription = "Image of my cat",
-                modifier = androidx.compose.ui.Modifier
-                    .size(150.dp)
-                    .clip(RoundedCornerShape(0.dp)),
-                contentScale = ContentScale.Crop
-            )
-            Image(
-                painter = painterResource(id = R.drawable.secret_key),
-                contentDescription = "Secret Key meme",
-                modifier = androidx.compose.ui.Modifier
-                    .size(150.dp)
-                    .clip(RoundedCornerShape(0.dp)),
-                contentScale = ContentScale.Crop
+            Text(
+                text = bio,
+                color = Color.White,
+                fontFamily = FontFamily.Serif,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
             )
         }
     }
 }
+@Composable
+fun Grid_Post (
+    User_name: String,
+    Img_id_1: Int,
+    Img_id_2 : Int,
+    Img_id_3 : Int
+){
 
-// stato  Text(text = "pippo_is_what_they_call_meow", color= Color.White)
+}
